@@ -8,10 +8,29 @@ Avance al 25/10/2026. Para retomar en otro chat, pegá este archivo junto con ku
 |---|---|
 | 1. Estructura del carrusel | ✅ Definida |
 | Elección de fotos del encargo Simpsons | ✅ Definida |
-| 2. Caption en inglés | ⏳ Pendiente (es el próximo paso) |
-| 3. Hashtags | ⏳ Pendiente |
+| Infografía "How a custom order works" | ✅ Diseño listo, falta publicar |
+| 2. Caption en inglés (de la infografía) | ✅ Listo, ver abajo |
+| 3. Hashtags | ✅ Listo, ver abajo |
 | 4. Story de 3 slides con sticker de enlace | ⏳ Pendiente |
 | 5. Revisión final de fotos y mockups | ⏳ Pendiente |
+
+## Infografía "How a custom order works"
+
+Post de apoyo, en inglés. Formato 1080 x 1350, exportado en JPG desde Canva.
+
+Medidas: 8 x 6 in o 10 x 7 in (no 8 x 10).
+
+Caption:
+
+> Scale cars aren't just toys. For many of us, they hold memories. At Kubo, we frame them to stay with you always.
+>
+> Send us a photo of your car and we'll design a frame around it. Each one is handmade in Winnipeg and made to order.
+>
+> Frames come in 8 x 6 in or 10 x 7 in. Custom frames are ready in 10 business days.
+>
+> DM to order yours. 🏁
+>
+> #DiecastCollector #ScaleModels #CustomFrame #MadeInWinnipeg #KUBO
 
 ## Formato
 
