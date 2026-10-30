@@ -28,6 +28,7 @@ Elegir según el tipo. Consultar varias en paralelo cuando sea posible.
 - Behance (`behance.net`): proyectos completos con proceso de diseño.
 
 **Webs:**
+- A1 Gallery (`a1.gallery`): sitios reales con capturas y medidas tomadas de la página en vivo (colores, tipografías, tamaños, espaciado). Es la primera opción para webs si sus herramientas `mcp__a1__*` están disponibles. No cubre apps.
 - Awwwards (`awwwards.com`): webs premiadas, más experimentales.
 - Land-book (`land-book.com`): landing pages organizadas por sección (hero, precios, FAQ).
 - Godly (`godly.website`): webs con diseño cuidado y bien curadas.
@@ -36,6 +37,14 @@ Elegir según el tipo. Consultar varias en paralelo cuando sea posible.
 Si el usuario pide fuentes concretas, usar esas. Si no, usar 2 o 3 del grupo que corresponda.
 
 ## 3. Cómo buscar
+
+**Con A1 Gallery (webs):** si las herramientas `mcp__a1__*` no aparecen cargadas, buscarlas primero con ToolSearch (`a1 gallery`).
+- `search_websites` con consultas cortas (1 a 3 palabras o términos de estilo, por ejemplo `dark`, `fintech`, `big-type`). Consultas largas devuelven poco. Usar `mode: "discovery"` cuando el brief sea un estilo y `relevance` cuando sea algo concreto. Si la respuesta trae `broadenedSearch`, decirlo al usuario: los resultados son más amplios de lo pedido.
+- `browse_websites` con `styleSlugs` o `typeSlug` para filtrar por estilo o tipo de sitio (`get_design_filters` muestra los valores válidos).
+- `search_sections` para ver secciones concretas (hero, precios, FAQ) con sus tokens medidos, y `analyze_design_tokens` para comparar tamaños, espaciado y paleta de un tipo de sección con la media de sitios reales.
+- No hace falta `get_website` por cada resultado: los resultados ya traen url, captura, estilos, colores y tipos. Mostrar la captura que devuelve A1, no imágenes de otra fuente.
+
+**Con otras fuentes (apps y webs sin A1):**
 
 - Usar `WebSearch` con consultas tipo `site:dribbble.com <tipo de producto> <estilo>`, por ejemplo `site:dribbble.com fintech app dashboard dark`.
 - Usar `WebFetch` solo sobre páginas concretas que se quieran describir. Muchos de estos sitios bloquean el acceso automatizado o requieren cuenta: si una página no se puede leer, decirlo en el resultado y no inventar detalles.
@@ -49,7 +58,7 @@ Para cada ejemplo, solo lo que se pueda verificar en la página:
 - **Nombre y enlace** (el enlace directo a la pieza, con la fuente).
 - **Qué es**: app o web, sector, pantalla o sección concreta.
 - **Qué aporta**: una o dos frases sobre lo que sirve como inspiración (jerarquía, uso del color, navegación, microcopy, espaciado, tipografía).
-- **Paleta y tipografía** si se pueden identificar, en valores aproximados (por ejemplo "fondo oscuro, acento naranja, sans serif geométrica"). No afirmar hex exactos si no se midieron.
+- **Paleta y tipografía**: si viene de A1, usar los valores medidos (hex con su rol y nombres de fuentes). En otras fuentes, usar valores aproximados (por ejemplo "fondo oscuro, acento naranja, sans serif geométrica") y no afirmar hex exactos.
 - **Qué no copiar**: un aspecto que sea específico de esa marca o que no encaje con el brief.
 
 Al final, resumir patrones que se repiten en los ejemplos (2 a 4 puntos) y una recomendación concreta para el brief del usuario.
@@ -69,7 +78,7 @@ Estructura del archivo:
 
 **Brief:** <una o dos frases>
 **Tipo:** app | web
-**Fuentes consultadas:** <lista>
+**Fuentes consultadas:** <lista; indicar si A1 Gallery se usó>
 **Fecha:** <AAAA-MM-DD>
 
 ## Ejemplos
@@ -91,6 +100,7 @@ Estructura del archivo:
 
 ## Límites de esta búsqueda
 - Páginas que no se pudieron leer, y por qué.
+- Si A1 no estaba disponible para una búsqueda web, indicarlo aquí.
 ```
 
 No crear Notion ni otros servicios externos salvo que el usuario lo pida: consumen más contexto y el archivo es suficiente.
