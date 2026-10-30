@@ -20,7 +20,13 @@ Si el usuario no indica el tipo, asumir "web" para una landing y "app" para algo
 
 ## 2. Fuentes a consultar
 
-Elegir según el tipo. Consultar varias en paralelo cuando sea posible.
+**Antes de buscar, preguntar al usuario qué fuentes quiere usar** con `AskUserQuestion` (selección múltiple). Así no se gastan tokens en fuentes que no le interesan. Ofrecer las opciones del tipo de proyecto, con la recomendada primero y marcada "(Recomendado)":
+
+- Web: A1 Gallery (medidas reales), Land-book, Awwwards, Godly.
+- App: Mobbin (flujos), Dribbble, Behance.
+- Mixto o sin preferencia: combinar una de cada grupo.
+
+Si el usuario responde "decide tú" o no contesta, elegir 2 o 3 según el tipo y decirlo en el resultado. Consultar varias en paralelo cuando sea posible.
 
 **Apps (móvil y escritorio):**
 - Dribbble (`dribbble.com`): muy visual, buena para pantallas sueltas y estilos.
