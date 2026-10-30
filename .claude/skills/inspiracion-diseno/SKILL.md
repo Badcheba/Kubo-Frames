@@ -1,83 +1,84 @@
 ---
 name: inspiracion-diseno
-description: Busca ejemplos de referencia para inspirarse al diseñar una app (móvil o escritorio) o una web, y guarda una selección organizada en un archivo Markdown del repositorio. Usar cuando el usuario pida inspiración, ejemplos, referencias o ideas para diseñar una app, una web, una landing, una pantalla o un flujo, o diga cosas como "busca ejemplos de", "quiero inspirarme", "moodboard", "referencias visuales".
+description: Busca ejemplos de referencia para diseñar una app (móvil o escritorio) o una web, y guarda una selección con análisis en un archivo Markdown dentro de la carpeta inspiracion/ del repositorio. Usar cuando el usuario pida inspiración, ejemplos, referencias, ideas o moodboard para una app, web, landing, pantalla, flujo o sección, o diga cosas como "busca ejemplos de", "quiero inspirarme", "referencias visuales", "cómo debería verse".
 ---
 
 # Inspiración de diseño (apps y webs)
 
-Objetivo: reunir de 6 a 12 ejemplos reales, bien elegidos y explicados, para que el usuario tome decisiones de diseño con evidencia. Es referencia visual, no un plan de copia: nunca copiar assets, logos o textos de los sitios.
+Objetivo: reunir de 6 a 12 ejemplos reales, elegidos y explicados, para que la persona decida con evidencia. Es referencia visual, no un plan de copia: nunca copiar assets, logos ni textos de los sitios.
+
+Flujo: entender el brief → elegir fuentes con la persona → buscar → anotar → guardar → resumir.
 
 ## 1. Entender el brief
 
-Antes de buscar, confirmar (sin preguntar de más, usar valores razonables si no se indican):
+Confirmar solo lo que falte y sea necesario:
 
-- **Tipo**: app (móvil, escritorio o web app) o web (landing, sitio corporativo, portfolio, tienda, etc.).
+- **Tipo**: app (móvil, escritorio o web app) o web (landing, corporativa, portfolio, tienda).
 - **Producto y público**: qué hace y para quién.
 - **Tono**: sobrio, lúdico, premium, técnico, cálido, etc.
 - **Restricciones**: marca existente, colores, idioma, modo claro u oscuro.
 
-Si el usuario no indica el tipo, asumir "web" para una landing y "app" para algo con login o flujos.
+Si no se indica el tipo: "web" para una landing o un sitio informativo, "app" para algo con login o flujos. Si el brief ya es claro, no preguntar nada más.
 
-## 2. Fuentes a consultar
+## 2. Elegir fuentes con la persona
 
-**Antes de buscar, preguntar al usuario qué fuentes quiere usar** con `AskUserQuestion` (selección múltiple). Así no se gastan tokens en fuentes que no le interesan. Ofrecer las opciones del tipo de proyecto, con la recomendada primero y marcada "(Recomendado)":
+Antes de buscar, preguntar con `AskUserQuestion` (selección múltiple) qué fuentes quiere. Así no se gastan tokens en fuentes que no interesan. Poner primero la opción recomendada, con "(Recomendado)".
 
-- Web: A1 Gallery (medidas reales), Land-book, Awwwards, Godly.
-- App: Mobbin (flujos), Dribbble, Behance.
-- Mixto o sin preferencia: combinar una de cada grupo.
+| Tipo | Fuentes | Para qué sirven |
+|---|---|---|
+| Web | **A1 Gallery** | Sitios reales con capturas y medidas tomadas de la página en vivo (colores, tipografías, tamaños, espaciado). Recomendada para webs. |
+| Web | Land-book | Landing pages separadas por sección (hero, precios, FAQ). |
+| Web | Awwwards | Webs premiadas, más experimentales. |
+| Web | Godly | Webs con diseño cuidado y bien curado. |
+| App | Mobbin | Flujos reales (onboarding, pagos, ajustes). Parte del contenido requiere cuenta. |
+| App | Dribbble | Pantallas sueltas y estilos visuales muy variados. |
+| App | Behance | Proyectos completos con proceso de diseño. |
 
-Si el usuario responde "decide tú" o no contesta, elegir 2 o 3 según el tipo y decirlo en el resultado. Consultar varias en paralelo cuando sea posible.
+Dribbble y Behance también sirven para web. Si la persona responde "decide tú" o no contesta, elegir 2 o 3 según el tipo y dejarlo indicado en el archivo. Si pide fuentes concretas, usar esas.
 
-**Apps (móvil y escritorio):**
-- Dribbble (`dribbble.com`): muy visual, buena para pantallas sueltas y estilos.
-- Mobbin (`mobbin.com`): flujos reales de apps (onboarding, pagos, ajustes). Lo mejor para ver cómo se conectan las pantallas. Parte del contenido requiere cuenta.
-- Behance (`behance.net`): proyectos completos con proceso de diseño.
+## 3. Buscar
 
-**Webs:**
-- A1 Gallery (`a1.gallery`): sitios reales con capturas y medidas tomadas de la página en vivo (colores, tipografías, tamaños, espaciado). Es la primera opción para webs si sus herramientas `mcp__a1__*` están disponibles. No cubre apps.
-- Awwwards (`awwwards.com`): webs premiadas, más experimentales.
-- Land-book (`land-book.com`): landing pages organizadas por sección (hero, precios, FAQ).
-- Godly (`godly.website`): webs con diseño cuidado y bien curadas.
-- Dribbble y Behance también sirven para web.
+### Con A1 Gallery
 
-Si el usuario pide fuentes concretas, usar esas. Si no, usar 2 o 3 del grupo que corresponda.
+1. Si las herramientas `mcp__a1__*` no están cargadas, cargarlas con ToolSearch (`select:mcp__a1__search_websites,mcp__a1__browse_websites,mcp__a1__search_sections,mcp__a1__analyze_design_tokens`). Si no están disponibles, seguir con las otras fuentes y anotarlo en los límites.
+2. `search_websites` con consultas cortas: 1 a 3 palabras o términos de estilo (`dark`, `fintech`, `big-type`). Las consultas largas devuelven poco. Usar `mode: "discovery"` si el brief es un estilo o una sensación, y `relevance` si es algo concreto.
+3. Si la respuesta trae `broadenedSearch`, decirlo: los resultados son más amplios de lo pedido.
+4. `browse_websites` con `styleSlugs` o `typeSlug` para filtrar. `get_design_filters` lista los valores válidos.
+5. `search_sections` para ver secciones concretas (hero, precios, FAQ) con sus tokens medidos. `analyze_design_tokens` sirve para comparar tamaños, espaciado y paleta de un tipo de sección con la media de sitios reales.
+6. No llamar `get_website` por cada resultado: ya traen url, captura, estilos, colores y tipos. Mostrar la captura que devuelve A1.
 
-## 3. Cómo buscar
+### Con otras fuentes
 
-**Con A1 Gallery (webs):** si las herramientas `mcp__a1__*` no aparecen cargadas, buscarlas primero con ToolSearch (`a1 gallery`).
-- `search_websites` con consultas cortas (1 a 3 palabras o términos de estilo, por ejemplo `dark`, `fintech`, `big-type`). Consultas largas devuelven poco. Usar `mode: "discovery"` cuando el brief sea un estilo y `relevance` cuando sea algo concreto. Si la respuesta trae `broadenedSearch`, decirlo al usuario: los resultados son más amplios de lo pedido.
-- `browse_websites` con `styleSlugs` o `typeSlug` para filtrar por estilo o tipo de sitio (`get_design_filters` muestra los valores válidos).
-- `search_sections` para ver secciones concretas (hero, precios, FAQ) con sus tokens medidos, y `analyze_design_tokens` para comparar tamaños, espaciado y paleta de un tipo de sección con la media de sitios reales.
-- No hace falta `get_website` por cada resultado: los resultados ya traen url, captura, estilos, colores y tipos. Mostrar la captura que devuelve A1, no imágenes de otra fuente.
+- `WebSearch` con `site:` y términos del brief, por ejemplo `site:mobbin.com onboarding fintech` o `site:dribbble.com dashboard app dark`.
+- `WebFetch` solo sobre páginas concretas que valga la pena describir. Muchos de estos sitios bloquean la lectura automática o piden cuenta: si una página no se puede leer, decirlo y no inventar detalles.
+- Preferir trabajos recientes (últimos 2 o 3 años), salvo que el estilo buscado sea clásico.
 
-**Con otras fuentes (apps y webs sin A1):**
+### Criterios de selección
 
-- Usar `WebSearch` con consultas tipo `site:dribbble.com <tipo de producto> <estilo>`, por ejemplo `site:dribbble.com fintech app dashboard dark`.
-- Usar `WebFetch` solo sobre páginas concretas que se quieran describir. Muchos de estos sitios bloquean el acceso automatizado o requieren cuenta: si una página no se puede leer, decirlo en el resultado y no inventar detalles.
-- Preferir ejemplos recientes (últimos 2 o 3 años) salvo que el estilo buscado sea clásico.
-- Variar: no devolver 6 ejemplos del mismo estilo. Incluir al menos un ejemplo "seguro" y uno más arriesgado.
+- Variar: no devolver 6 ejemplos del mismo estilo. Incluir al menos uno "seguro" y uno más arriesgado.
+- Cuidar el número de llamadas: con 6 a 8 resultados alcanza para la mayoría de los briefs.
 
-## 4. Qué anotar por ejemplo
+## 4. Anotar cada ejemplo
 
-Para cada ejemplo, solo lo que se pueda verificar en la página:
+Solo lo que se pueda verificar en la página o en los datos de la búsqueda:
 
-- **Nombre y enlace** (el enlace directo a la pieza, con la fuente).
+- **Nombre y enlace**: el enlace directo a la pieza, con su fuente.
 - **Qué es**: app o web, sector, pantalla o sección concreta.
-- **Qué aporta**: una o dos frases sobre lo que sirve como inspiración (jerarquía, uso del color, navegación, microcopy, espaciado, tipografía).
-- **Paleta y tipografía**: si viene de A1, usar los valores medidos (hex con su rol y nombres de fuentes). En otras fuentes, usar valores aproximados (por ejemplo "fondo oscuro, acento naranja, sans serif geométrica") y no afirmar hex exactos.
-- **Qué no copiar**: un aspecto que sea específico de esa marca o que no encaje con el brief.
+- **Qué aporta**: una o dos frases sobre lo que sirve como inspiración (jerarquía, color, navegación, microcopy, espaciado, tipografía).
+- **Paleta y tipografía**: si vienen de A1, usar los valores medidos (hex con su rol y nombres de fuentes). En otras fuentes, usar descripciones aproximadas ("fondo oscuro, acento naranja, sans serif geométrica") y no afirmar hex exactos.
+- **Qué no copiar**: lo que sea específico de la marca o no encaje con el brief.
 
-Al final, resumir patrones que se repiten en los ejemplos (2 a 4 puntos) y una recomendación concreta para el brief del usuario.
+Al final, incluir 2 a 4 patrones que se repiten y una recomendación concreta para el brief.
 
-## 5. Dónde guardar el resultado
+## 5. Guardar
 
-Guardar siempre el resultado en un archivo Markdown dentro del repositorio, en la carpeta `inspiracion/`, con este nombre:
+Guardar en `inspiracion/` dentro del repositorio, con este nombre:
 
 `inspiracion/<tema-en-kebab-case>-<AAAA-MM-DD>.md`
 
-Por ejemplo: `inspiracion/app-finanzas-personales-2026-10-30.md`.
+Obtener la fecha con `date +%F`. Por ejemplo: `inspiracion/app-finanzas-personales-2026-10-30.md`.
 
-Estructura del archivo:
+Estructura:
 
 ```markdown
 # Inspiración: <tema>
@@ -96,8 +97,6 @@ Estructura del archivo:
 - Paleta y tipografía: ...
 - Qué no copiar: ...
 
-(repetir)
-
 ## Patrones comunes
 - ...
 
@@ -106,13 +105,13 @@ Estructura del archivo:
 
 ## Límites de esta búsqueda
 - Páginas que no se pudieron leer, y por qué.
-- Si A1 no estaba disponible para una búsqueda web, indicarlo aquí.
+- Fuentes que no estuvieron disponibles, por ejemplo A1 Gallery.
 ```
 
-No crear Notion ni otros servicios externos salvo que el usuario lo pida: consumen más contexto y el archivo es suficiente.
+No crear páginas en Notion ni otros servicios externos salvo que la persona lo pida: consumen más contexto y el archivo basta.
 
-## 6. Al terminar
+## 6. Cerrar
 
 1. Confirmar la ruta del archivo creado.
 2. Dar un resumen de 3 a 5 líneas en el chat: los ejemplos más útiles y la recomendación principal.
-3. Si el trabajo es para el repositorio, hacer commit en la rama de trabajo. No abrir pull request salvo que el usuario lo pida.
+3. Si el archivo va al repositorio, hacer commit y push en la rama de trabajo. No abrir un pull request salvo que la persona lo pida.
