@@ -9,16 +9,14 @@ Objetivo: reunir de 6 a 12 ejemplos reales, elegidos y explicados, para que la p
 
 Flujo: entender el brief → elegir fuentes con la persona → buscar → anotar → guardar → resumir.
 
-## 1. Entender el brief
+## 1. Tomar el brief de la instrucción
 
-Confirmar solo lo que falte y sea necesario:
+El mensaje de la persona es el brief. No pedir más datos ni hacer preguntas de confirmación sobre el brief. Inferir lo que falte a partir del mensaje:
 
-- **Tipo**: app (móvil, escritorio o web app) o web (landing, corporativa, portfolio, tienda).
-- **Producto y público**: qué hace y para quién.
-- **Tono**: sobrio, lúdico, premium, técnico, cálido, etc.
-- **Restricciones**: marca existente, colores, idioma, modo claro u oscuro.
+- **Tipo**: app (móvil, escritorio o web app) o web (landing, corporativa, portfolio, tienda). Si no se indica: "web" para una landing o un sitio informativo, "app" para algo con login o flujos.
+- **Producto, público, tono y restricciones**: tomarlos de lo que diga el mensaje. Lo que no aparezca no se pregunta; se deja como supuesto en el archivo, en el campo **Brief**.
 
-Si no se indica el tipo: "web" para una landing o un sitio informativo, "app" para algo con login o flujos. Si el brief ya es claro, no preguntar nada más.
+La única pregunta permitida antes de buscar es la de fuentes (paso 2).
 
 ## 2. Elegir fuentes con la persona
 
